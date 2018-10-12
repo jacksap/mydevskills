@@ -10,11 +10,11 @@ LEVELS = (
     (5, 'Expert'),
 )
 
+
 class Skill(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
-    level = models.CharField(
-       max_length=1,
+    level = models.IntegerField(
        # add the 'choices' field option
        choices=LEVELS,
        # set the default value for meal to be 'B'

@@ -11,19 +11,22 @@ from django.contrib.auth.forms import UserCreationForm
 class SkillAdd(CreateView):
     model = Skill
     fields = '__all__'
-
+    
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
         return HttpResponseRedirect('/skills/')
 
+        
 def index(request):
     return render(request, 'index.html')
 
+
 def skills_index(request):
-		skills = Skill.objects.all()
-		return render(request, 'skills/index.html', { 'skills': skills })
+	skills = Skill.objects.all()
+	return render(request, 'skills/index.html', { 'skills': skills })
+
 
 def login_view(request):
     if request.method == 'POST':
